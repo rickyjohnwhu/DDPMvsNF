@@ -11,7 +11,7 @@ from matplotlib import pyplot as plt
 from torch import nn
 from tqdm import tqdm
 
-def preprocess_samples(filepath):
+def preprocess_samples(filepath, device):
 
   with open(filepath, 'r') as f:
     rawdata = np.loadtxt(f)
