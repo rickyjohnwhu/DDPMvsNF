@@ -11,7 +11,7 @@ from matplotlib import pyplot as plt
 from torch import nn
 from tqdm import tqdm
 
-def preprocess_samples(filepath, device):
+def preprocess_samples(filepath, device, split):
 
   with open(filepath, 'r') as f:
     rawdata = np.loadtxt(f)
@@ -22,7 +22,7 @@ def preprocess_samples(filepath, device):
 
   tensor_dataset = torch.utils.data.TensorDataset(alldata)
 
-  train, valid, test = random_split(tensor_dataset, [train_frac, valid_frac, test_frac], generator=torch.Generator().manual_seed(42))
+  train, valid, test = random_split(tensor_dataset, split, generator=torch.Generator().manual_seed(42))
 
   train_np = train[:][0].to('cpu').numpy()
   valid_np = valid[:][0].to('cpu').numpy()
