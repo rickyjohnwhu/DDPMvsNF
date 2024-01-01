@@ -4,7 +4,7 @@ import normflows as nf
 import time
 import matplotlib.pyplot as plt
 import pprint
-import utils
+from utils import counts_to_KLD, counts_to_WD
 from torch.utils.data import Dataset, TensorDataset, DataLoader, random_split
 from scipy.stats import wasserstein_distance
 from sklearn.decomposition import PCA
