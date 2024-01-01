@@ -132,7 +132,7 @@ def sampler(model, num_samples):
   #print(f"Generated {num_samples} samples in {delta} seconds at a rate of {num_samples/delta} samples per second.")
   return gendata, num_samples/delta
 
-def train_and_sample(model, loader, valid_np, test_np):
+def train_and_sample(model, loader, valid_np, test_np, pca):
   
   valid_KLD_hist = np.array([])
   valid_WD_hist = np.array([])
