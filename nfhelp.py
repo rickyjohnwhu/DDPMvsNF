@@ -155,7 +155,7 @@ def train_and_sample(model, loader, valid_np, test_np, pca, bounds):
   final_WD_score = counts_to_WD(generated_testing, test_np, pca, bounds)
   iterations = len(valid_KLD_hist)
 
-  info = {'Training data amount': len(loader.dataset.indices), 'Dimensions': dimensions, 'Learnable parameters': params, 'Iterations': iterations, 
+  info = {'Training data amount': len(loader.dataset.indices), 'Learnable parameters': params, 'Iterations': iterations, 
           'Speed (samples/s)': speed, 'Final KLD': final_KLD_score, 'Final WD': final_WD_score}
 
   return generated_testing, info
