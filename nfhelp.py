@@ -4,13 +4,67 @@ import normflows as nf
 import time
 import matplotlib.pyplot as plt
 import pprint
-from utils import counts_to_KLD, counts_to_WD
 from torch.utils.data import Dataset, TensorDataset, DataLoader, random_split
 from scipy.stats import wasserstein_distance
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
 from torch import nn
 from tqdm import tqdm
+
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+def prob_hist(data, bounds, binw=0.1):
+
+    binner = (np.arange(bounds[0], bounds[1] + binw, binw), np.arange(bounds[0], bounds[1] + binw, binw))
+
+    counts, xedges, yedges = np.histogram2d(data[:,0], data[:,1], bins=binner, density=True)
+    counts = counts.ravel()
+
+    return counts
+
+def KLD(a, b):
+
+    a = np.asarray(a, dtype=float) + 1e-7
+    b = np.asarray(b, dtype=float) + 1e-7
+
+    return np.sum(np.where(a*b != 0, a * np.log(a / b), 0))
+
+def counts_to_KLD(data1, data2, pca, bounds):
+
+    pca_data1 = pca.transform(data1)
+    pca_data2 = pca.transform(data2)
+
+    counts1 = prob_hist(pca_data1, bounds)
+    counts2 = prob_hist(pca_data2, bounds)
+
+    return KLD(counts1, counts2)
+
+def counts_to_WD(data1, data2, pca, bounds):
+
+    pca_data1 = pca.transform(data1)
+    pca_data2 = pca.transform(data2)
+
+    counts1 = prob_hist(pca_data1, bounds)
+    counts2 = prob_hist(pca_data2, bounds)
+
+    return wasserstein_distance(counts1, counts2)
+
+def FE_hist(data, bounds, binw=0.1, binner=None):
+
+    if binner is None:
+        binner = (np.arange(bounds[0], bounds[1] + binw, binw),
+                    np.arange(bounds[2], bounds[3] + binw, binw))
+
+    counts, xedges, yedges = np.histogram2d(data[:,0], data[:,1],
+                                           bins=binner, density=True)
+    prob = counts + 1e-3
+    G = -np.log(prob)
+    G[G == np.inf] = -1
+    G[G == -1] = max(G.ravel())
+    G -= min(G.ravel())
+    
+    return G, xedges, yedges
 
 def preprocess_samples(filepath, split, batch_size, device):
 
@@ -89,16 +143,16 @@ def train_and_sample(model, loader, valid_np, test_np):
     model.eval()
     
     generated_samples = sampler(model, len(valid_np))[0]
-    valid_KLD = utils.counts_to_KLD(generated_samples, valid_np, pca, bounds)
+    valid_KLD = counts_to_KLD(generated_samples, valid_np, pca, bounds)
     valid_KLD_hist = np.append(valid_KLD_hist, valid_KLD)
-    valid_WD = utils.counts_to_WD(generated_samples, valid_np, pca, bounds)
+    valid_WD = counts_to_WD(generated_samples, valid_np, pca, bounds)
     valid_WD_hist = np.append(valid_WD_hist, valid_WD)
     #print('KLD history:', valid_KLD_hist)
     #print('WD history:', valid_WD_hist)
   
   generated_testing, speed = sampler(model, len(test_np))
-  final_KLD_score = utils.counts_to_KLD(generated_testing, test_np, pca, bounds)
-  final_WD_score = utils.counts_to_WD(generated_testing, test_np, pca, bounds)
+  final_KLD_score = counts_to_KLD(generated_testing, test_np, pca, bounds)
+  final_WD_score = counts_to_WD(generated_testing, test_np, pca, bounds)
   iterations = len(valid_KLD_hist)
 
   info = {'Training data amount': len(train_np), 'Dimensions': dimensions, 'Learnable parameters': params, 'Iterations': iterations, 
