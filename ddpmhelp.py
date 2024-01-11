@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import time
 import torch.nn.functional as F
 import torch.nn as nn
-import 
+import utils
 from functorch import vmap
 from scipy.stats import wasserstein_distance
 from torch.utils.data import Dataset, TensorDataset, DataLoader, random_split
@@ -147,9 +147,11 @@ class VPDiffusion:
         noise = torch.randn_like(xt)
         return noise
 
-def init_model_backbone(resnet_block_groups, learned_sinusoidal_dim, dim_mults, lr):
+def init_model_backbone(loader, resnet_block_groups, learned_sinusoidal_dim, dim_mults, num_set, lr):
 
-  num_torsions = train_np.__getitem__(0).shape[-1]
+  #num_torsions = train_np.__getitem__(0).shape[-1]
+  num_torsions = loader.dataset[0].shape[-1]
+  
   model_dim = int(np.ceil(num_torsions/resnet_block_groups) * resnet_block_groups)
 
   #print(f"There are {num_torsions} torsion angles and {resnet_block_groups} resnet block groups,")
@@ -194,7 +196,7 @@ def train_epoch(loader, backbone, diffusion):
     loss.backward()
     backbone.optim.step()
 
-def sample_batch(batch_size, loader, diffusion, backbone, pred_type="x0"):
+def sample_batch(batch_size, loader, diffusion, backbone, num_set, pred_type="x0"):
 
     def sample_prior(batch_size, shape):
         "Generates samples of gaussian noise"
@@ -219,7 +221,7 @@ def sample_batch(batch_size, loader, diffusion, backbone, pred_type="x0"):
         xt = xt_next
     return xt
 
-def sample_loop(num_samples, batch_size, loader, diffusion, backbone, num_torsions):
+def sample_loop(num_samples, batch_size, loader, diffusion, backbone, num_torsions, num_set):
 
     gendata = torch.empty(0, 1, num_torsions)
 
@@ -229,15 +231,15 @@ def sample_loop(num_samples, batch_size, loader, diffusion, backbone, num_torsio
 
     with torch.no_grad():
         for save_idx in range(n_runs):
-            x0 = sample_batch(batch_size, loader, diffusion, backbone)
+            x0 = sample_batch(batch_size, loader, diffusion, backbone, num_set)
             # print(f"Samples generated {(save_idx + 1) * batch_size}")
             gendata = torch.cat((gendata, x0), 0)
 
     return gendata
 
-def sampler(samples, batchsize, loader, diffusion, backbone, num_torsions):
+def sampler(samples, batchsize, loader, diffusion, backbone, num_torsions, num_set):
   start = time.time()
-  gendata = sample_loop(samples, batchsize, loader, diffusion, backbone, num_torsions)
+  gendata = sample_loop(samples, batchsize, loader, diffusion, backbone, num_torsions, num_set)
   pass
   end = time.time()
   delta = end - start
@@ -245,7 +247,7 @@ def sampler(samples, batchsize, loader, diffusion, backbone, num_torsions):
   gendata = gendata.squeeze(1)
   return gendata, samples/delta
 
-def train_and_sample(model, loader, valid_np, test_np, pca, bounds, diffusion, backbone, num_torsions):
+def train_and_sample(model, loader, valid_np, test_np, pca, bounds, diffusion, backbone, num_torsions, num_set, sample_batching):
 
   valid_KLD_hist = np.array([])
   valid_WD_hist = np.array([])
@@ -256,21 +258,21 @@ def train_and_sample(model, loader, valid_np, test_np, pca, bounds, diffusion, b
 
     model.eval()
 
-    generated_samples = sampler(len(valid_np), sample_batching, loader, diffusion, backbone, num_torsions)[0]
+    generated_samples = sampler(len(valid_np), sample_batching, loader, diffusion, backbone, num_torsions, num_set)[0]
 
-    valid_KLD = counts_to_KLD(generated_samples, valid_np, pca, bounds)
+    valid_KLD = utils.counts_to_KLD(generated_samples, valid_np, pca, bounds)
     valid_KLD_hist = np.append(valid_KLD_hist, valid_KLD)
-    valid_WD = counts_to_WD(generated_samples, valid_np, pca, bounds)
+    valid_WD = utils.counts_to_WD(generated_samples, valid_np, pca, bounds)
     valid_WD_hist = np.append(valid_WD_hist, valid_WD)
 
     #print('KLD history:', valid_KLD_hist)
     #print('WD history:', valid_WD_hist)
 
-  generated_testing, speed = sampler(len(test_np), sample_batching, loader, diffusion, backbone, num_torsions)
-  final_KLD_score = counts_to_KLD(generated_testing, test_np, pca, bounds)
-  final_WD_score = counts_to_WD(generated_testing, test_np, pca, bounds)
+  generated_testing, speed = sampler(len(test_np), sample_batching, loader, diffusion, backbone, num_torsions, num_set)
+  final_KLD_score = utils.counts_to_KLD(generated_testing, test_np, pca, bounds)
+  final_WD_score = utils.counts_to_WD(generated_testing, test_np, pca, bounds)
 
-  info = {'Architecture': 'DDPM', 'Training data amount': len(loader.dataset.indices), 'Learnable parameters': count_parameters(model), 'Iterations': len(valid_KLD_hist),
+  info = {'Architecture': 'DDPM', 'Training data amount': len(loader.dataset.indices), 'Learnable parameters': utils.count_parameters(model), 'Iterations': len(valid_KLD_hist),
           'Speed (samples/s)': speed, 'Final KLD': final_KLD_score, 'Final WD': final_WD_score, 'Dimensions': len(generated_testing[0])}
 
   return generated_testing, info
