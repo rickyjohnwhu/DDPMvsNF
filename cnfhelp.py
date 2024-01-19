@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import ot as pot
 import torch
-import torchdyn
+#import torchdyn
 import torch
 import numpy as np
 import time
@@ -14,21 +14,23 @@ import matplotlib.pyplot as plt
 import normflows as nf
 import utils
 from sklearn.decomposition import PCA
-from scipy.stats import wasserstein_distance
+#from scipy.stats import wasserstein_distance
 from matplotlib import pyplot as plt
-from torch import nn
+#from torch import nn
 from tqdm import tqdm
 from torchdyn.core import NeuralODE
-from torchdyn.datasets import generate_moons
+#from torchdyn.datasets import generate_moons
 from torch.utils.data import Dataset, TensorDataset, DataLoader, random_split
 from torchcfm.conditional_flow_matching import *
 from torchcfm.models.models import *
 from torchcfm.utils import *
 
 def preprocess_samples(filepath, split, batch_size, dataset_limiter):
-
-  with open(filepath, 'r') as f:
-    rawdata = np.loadtxt(f)
+    
+    #with open(filepath, 'r') as f:
+        #rawdata = np.loadtxt(f)
+    
+    rawdata = np.load(filepath)
 
     rawdata = rawdata[:dataset_limiter]
 

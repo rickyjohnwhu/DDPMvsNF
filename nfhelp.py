@@ -6,18 +6,22 @@ import matplotlib.pyplot as plt
 import pprint
 import utils
 from torch.utils.data import Dataset, TensorDataset, DataLoader, random_split
-from scipy.stats import wasserstein_distance
+#from scipy.stats import wasserstein_distance
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
-from torch import nn
+#from torch import nn
 from tqdm import tqdm
 
 def preprocess_samples(filepath, split, batch_size, dataset_limiter):
 
-  with open(filepath, 'r') as f:
-    rawdata = np.loadtxt(f)
+  #with open(filepath, 'r') as f:
+    #rawdata = np.loadtxt(f)
 
+  rawdata = np.load(filepath)
+    
   rawdata = rawdata[:dataset_limiter]
+
+  #alldata = torch.from_numpy(rawdata).to("cuda:0")
 
   alldata = torch.from_numpy(rawdata)
 

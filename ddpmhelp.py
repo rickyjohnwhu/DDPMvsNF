@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import torch.nn as nn
 import utils
 from functorch import vmap
-from scipy.stats import wasserstein_distance
+#from scipy.stats import wasserstein_distance
 from torch.utils.data import Dataset, TensorDataset, DataLoader, random_split
 from torch import nn
 from sklearn.decomposition import PCA
@@ -31,8 +31,10 @@ class number_dataset(Dataset):
 
 def preprocess_samples(filepath, split, batch_size, dataset_limiter):
 
-  with open(filepath, 'r') as f:
-    rawdata = np.loadtxt(f)
+  #with open(filepath, 'r') as f:
+    #rawdata = np.loadtxt(f)
+    
+    rawdata = np.load(filepath)
 
     rawdata = rawdata[:dataset_limiter]
 
