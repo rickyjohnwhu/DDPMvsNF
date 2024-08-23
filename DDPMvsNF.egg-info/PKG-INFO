@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: DDPMvsNF
+Version: 0.1
+Summary: A Python module to perform a comparison of generative models
+Author: Ricky
+Author-email: rjohn123@umd.edu
