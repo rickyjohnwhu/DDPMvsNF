@@ -1,0 +1,23 @@
+---
+config:
+  dataset_limiter: 100000
+  path_dim: 18
+  path_modes: 4
+  split: [0.8, 0.1, 0.1]
+  batch_size: 512
+  bounds: [-12, 12, -12, 12]
+  lr: 0.0005
+  w: 1000
+  sigma: 0.1
+  model_style: 'ExactOptimalTransportConditionalFlowMatcher'
+  time_varying: False
+  resnet_block_groups: 4
+  learned_sinusoidal_cond: False
+  learned_sinusoidal_dim: 16
+  dim_mults: [1, 2, 4]
+  model_dim: 128
+  device: 'cuda:0'
+  epoch_max: 30
+  aib9_status: True
+  input: '../../datasets/data_input/aib9_total_0.npy'
+  seed: 43
