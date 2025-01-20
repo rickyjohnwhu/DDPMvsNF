@@ -1,4 +1,4 @@
-name: newenv
+name: compenv
 channels:
 - conda-forge
 dependencies:
