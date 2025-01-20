@@ -1,5 +1,0 @@
-setup.py
-DDPMvsNF.egg-info/PKG-INFO
-DDPMvsNF.egg-info/SOURCES.txt
-DDPMvsNF.egg-info/dependency_links.txt
-DDPMvsNF.egg-info/top_level.txt
