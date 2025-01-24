@@ -8,26 +8,26 @@ argon2-cffi-bindings==21.2.0
 array-api-compat==1.4
 arrow==1.3.0
 asttokens==2.4.1
-astunparse @ file:///home/conda/feedstock_root/build_artifacts/astunparse_1610696312422/work
+astunparse==1.6.3
 async-lru==2.0.4
 async-timeout==4.0.3
 attrs==23.2.0
 Babel==2.14.0
 beautifulsoup4==4.12.2
-biopython @ file:///home/conda/feedstock_root/build_artifacts/biopython_1704895402616/work
+biopython==1.79
 bleach==6.1.0
 blosc2==2.5.1
-cached-property @ file:///home/conda/feedstock_root/build_artifacts/cached_property_1615209429212/work
+cached-property==1.5.2
 cachetools==5.3.2
-certifi @ file:///home/conda/feedstock_root/build_artifacts/certifi_1700303426725/work/certifi
+certifi==2023.7.22
 cffi==1.16.0
-cftime @ file:///home/conda/feedstock_root/build_artifacts/cftime_1698609935566/work
+cftime==1.6.4
 charset-normalizer==3.3.2
 clean-fid==0.1.35
-colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1666700638685/work
+colorama==0.4.6
 comm==0.2.1
-contourpy @ file:///home/conda/feedstock_root/build_artifacts/contourpy_1699041363598/work
-cycler @ file:///home/conda/feedstock_root/build_artifacts/cycler_1696677705766/work
+contourpy==1.1.0
+cycler==0.11.0
 debugpy==1.8.0
 decorator==5.1.1
 defusedxml==0.7.1
@@ -35,19 +35,19 @@ dill==0.3.8
 einops==0.7.0
 exceptiongroup==1.2.0
 executing==2.0.1
-fasteners @ file:///home/conda/feedstock_root/build_artifacts/fasteners_1643971550063/work
+fasteners==0.18
 fastjsonschema==2.19.1
 filelock==3.13.1
-fonttools @ file:///home/conda/feedstock_root/build_artifacts/fonttools_1704979835861/work
+fonttools==4.39.3
 fqdn==1.5.1
 frozenlist==1.4.1
 fsspec==2023.12.2
 google-auth==2.26.2
 google-auth-oauthlib==1.2.0
-GridDataFormats @ file:///home/conda/feedstock_root/build_artifacts/griddataformats_1697985967205/work
+GridDataFormats==1.0.1
 grpcio==1.60.0
-gsd @ file:///home/conda/feedstock_root/build_artifacts/gsd_1705978070869/work
-h5py @ file:///home/conda/feedstock_root/build_artifacts/h5py_1702471429234/work
+gsd==2.0.0
+h5py==3.8.0
 humanize==4.11.0
 idna==3.6
 ipykernel==6.29.0
@@ -56,7 +56,7 @@ ipywidgets==8.1.1
 isoduration==20.11.0
 jedi==0.19.1
 Jinja2==3.1.3
-joblib @ file:///home/conda/feedstock_root/build_artifacts/joblib_1691577114857/work
+joblib==1.3.1
 json5==0.9.14
 jsonpointer==2.4
 jsonschema==4.21.0
@@ -71,22 +71,22 @@ jupyterlab==4.0.10
 jupyterlab-widgets==3.0.9
 jupyterlab_pygments==0.3.0
 jupyterlab_server==2.25.2
-kiwisolver @ file:///home/conda/feedstock_root/build_artifacts/kiwisolver_1695379902431/work
+kiwisolver==1.4.4
 lightning-bolts==0.7.0
 lightning-utilities==0.10.0
 llvmlite==0.41.1
 Markdown==3.5.2
 MarkupSafe==2.1.3
-matplotlib @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-suite_1700509477637/work
+matplotlib==3.8.0
 matplotlib-inline==0.1.6
-mda-xdrlib @ file:///home/conda/feedstock_root/build_artifacts/mda-xdrlib_1693318078463/work
-MDAnalysis @ file:///home/conda/feedstock_root/build_artifacts/mdanalysis_1703774485603/work
-mdtraj @ file:///home/conda/feedstock_root/build_artifacts/mdtraj_1700152478883/work
+mda-xdrlib==0.2.0
+MDAnalysis==2.4.0
+mdtraj @ git+https://github.com/mdtraj/mdtraj.git
 mistune==3.0.2
-mmtf-python @ file:///home/conda/feedstock_root/build_artifacts/mmtf-python_1657095270742/work
+mmtf-python==1.1.1
 mpmath==1.3.0
-mrcfile @ file:///home/conda/feedstock_root/build_artifacts/mrcfile_1704968736657/work
-msgpack @ file:///home/conda/feedstock_root/build_artifacts/msgpack-python_1700926504817/work
+mrcfile==1.5.3
+msgpack==1.0.5
 multidict==6.0.4
 munkres==1.1.4
 natsort==8.4.0
@@ -95,14 +95,14 @@ nbconvert==7.14.2
 nbformat==5.9.2
 ndindex==1.7
 nest-asyncio==1.5.9
-netCDF4 @ file:///home/conda/feedstock_root/build_artifacts/netcdf4_1698266712652/work
-networkx @ file:///home/conda/feedstock_root/build_artifacts/networkx_1698504735452/work
+netCDF4==1.7.0
+networkx==3.1
 normflows==1.7.3
 notebook==7.0.6
 notebook_shim==0.2.3
 numba==0.58.1
-numexpr @ file:///home/conda/feedstock_root/build_artifacts/numexpr_1707139868047/work
-numpy @ file:///home/conda/feedstock_root/build_artifacts/numpy_1704280375097/work/dist/numpy-1.26.3-cp310-cp310-linux_x86_64.whl#sha256=d6b1cccf494a7701b8dd18911cff7c805fd90e8f4a24cde7c8e40f7805c0765d
+numexpr==2.8.4
+numpy==1.26.3
 nvidia-cublas-cu12==12.1.3.1
 nvidia-cuda-cupti-cu12==12.1.105
 nvidia-cuda-nvrtc-cu12==12.1.105
@@ -116,19 +116,16 @@ nvidia-nccl-cu12==2.18.1
 nvidia-nvjitlink-cu12==12.3.101
 nvidia-nvtx-cu12==12.1.105
 oauthlib==3.2.2
-OpenMM==8.0.0
-OpenMMPlumed @ file:///home/conda/feedstock_root/build_artifacts/openmm-plumed_1700131870510/work/build/python
 overrides==7.4.0
-packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1696202382185/work
+packaging==23.1
 pandas==2.0.3
 pandocfilters==1.5.0
-ParmEd @ file:///home/conda/feedstock_root/build_artifacts/parmed_1698252976997/work
+ParmEd==3.0.1
 parso==0.8.3
 pastel==0.2.1
-patsy @ file:///home/conda/feedstock_root/build_artifacts/patsy_1704469236901/work
-pdbfixer @ file:///home/conda/feedstock_root/build_artifacts/pdbfixer_1684358331657/work
+patsy==0.5.2
 pexpect==4.9.0
-pillow @ file:///home/conda/feedstock_root/build_artifacts/pillow_1704252020178/work
+pillow==9.3.0
 platformdirs==4.1.0
 ply==3.11
 poethepoet==0.10.0
@@ -139,19 +136,19 @@ protobuf==4.23.4
 psutil==5.9.7
 ptyprocess==0.7.0
 pure-eval==0.2.2
-py-cpuinfo @ file:///home/conda/feedstock_root/build_artifacts/py-cpuinfo_1666774466606/work
+py-cpuinfo==8.0.0
 pyasn1==0.5.1
 pyasn1-modules==0.3.0
 pycparser==2.21
-pyedr @ file:///home/conda/feedstock_root/build_artifacts/pyedr_1703367335318/work
+pyedr==0.8.0
 Pygments==2.17.2
 pynndescent==0.5.11
-pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1690737849915/work
+pyparsing==3.0.9
 PyQt5==5.15.9
 PyQt5-sip==12.12.2
-python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+python-dateutil==2.8.2
 python-json-logger==2.0.7
-pytng @ file:///home/conda/feedstock_root/build_artifacts/pytng_1703246372982/work
+pytng==0.3.3
 pytorch-lightning==1.9.5
 pytz==2023.3.post1
 PyYAML==6.0.1
@@ -170,36 +167,36 @@ scprep==1.2.3
 seaborn==0.13.1
 Send2Trash==1.8.2
 session_info==1.0.0
--e git+https://github.com/tiwarylab/simple-diffusion.git@a1b025727d8cc0307a1fb129559fabdc09d6ee56#egg=simple_diffusion&subdirectory=simple_diffusion
-sip @ file:///home/conda/feedstock_root/build_artifacts/sip_1697300428978/work
-six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+simple-diffusion @ git+https://github.com/tiwarylab/simple-diffusion.git@main#egg=simple_diffusion&subdirectory=simple_diffusion
+sip==6.5.1
+six==1.16.0
 slurm-workflow==0.16
 sniffio==1.3.0
 soupsieve==2.5
 stack-data==0.6.3
-statsmodels @ file:///home/conda/feedstock_root/build_artifacts/statsmodels_1702575356319/work
+statsmodels==0.14.0
 stdlib-list==0.10.0
 sympy==1.12
-tables @ file:///home/conda/feedstock_root/build_artifacts/pytables_1701702211874/work
+tables==3.7.0
 tensorboard==2.15.1
 tensorboard-data-server==0.7.2
 terminado==0.18.0
 threadpoolctl==3.2.0
-tidynamics @ file:///home/conda/feedstock_root/build_artifacts/tidynamics_1689080725019/work
+tidynamics==1.1.2
 tinycss2==1.2.1
-toml @ file:///home/conda/feedstock_root/build_artifacts/toml_1604308577558/work
-tomli @ file:///home/conda/feedstock_root/build_artifacts/tomli_1644342247877/work
+toml==0.10.2
+tomli==2.0.1
 tomlkit==0.12.3
 torch==2.1.2
 torchaudio==2.1.2
 torchcde==0.2.5
 torchcfm==1.0.5
 torchdiffeq==0.2.3
--e git+https://github.com/DiffEqML/torchdyn.git@95cc74b0e35330b03d2cd4d875df362a93e1b5ea#egg=torchdyn
+torchdyn @ git+https://github.com/DiffEqML/torchdyn.git@95cc74b0e35330b03d2cd4d875df362a93e1b5ea#egg=torchdyn
 torchmetrics==1.3.0
 torchsde==0.2.6
 torchvision==0.16.2
-tornado @ file:///home/conda/feedstock_root/build_artifacts/tornado_1695373560918/work
+tornado==6.3.2
 tqdm==4.66.1
 traitlets==5.14.1
 trampoline==0.1.2
@@ -208,7 +205,7 @@ types-python-dateutil==2.8.19.20240106
 typing_extensions==4.9.0
 tzdata==2023.4
 umap-learn==0.5.5
-unicodedata2 @ file:///home/conda/feedstock_root/build_artifacts/unicodedata2_1695847980273/work
+unicodedata2==15.0.0
 uri-template==1.3.0
 urllib3==2.1.0
 wcwidth==0.2.13
@@ -220,3 +217,4 @@ wget==3.2
 widgetsnbextension==4.0.9
 yarl==1.9.4
 zenodo-get==1.6.1
+
