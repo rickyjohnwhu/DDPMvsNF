@@ -4,13 +4,20 @@ import argparse
 from sklearn.decomposition import PCA
 from argparse import Namespace
 import yaml
-import utils_ns
+#import utils_ns
 import sys
 import os
 import warnings
 import torch
 import random
 import subprocess
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(current_dir))
+utils_dir = os.path.join(root_dir, 'utils')
+if utils_dir not in sys.path:
+    sys.path.append(utils_dir)
+import utils_ns
 
 warnings.filterwarnings("ignore", message=".*functorch.*deprecated.*vmap.*")
 
