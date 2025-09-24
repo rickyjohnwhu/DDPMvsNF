@@ -2,6 +2,8 @@
 
 Repository for the code to measure performance of Neural Spline Flows, Conditional Flow Matching, and Denoising Diffusion Probabilistic Models across Gaussian mixture model and Aib9 torsion angle distribution datasets.
 
+![image](utils/panelaib9.png)
+
 ## Setup
 
 This repository uses [Micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html).
