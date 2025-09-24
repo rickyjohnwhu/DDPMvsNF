@@ -1,8 +1,12 @@
-## Model Comparison: Neural Splines, Conditional Flow Matching, Denoising Diffusion Probabilistic Model
+## Model Comparison: NS, CFM, DDPM on GMM and Aib9 MD Data
 
 Repository for the code to measure performance of Neural Spline Flows, Conditional Flow Matching, and Denoising Diffusion Probabilistic Models across Gaussian mixture model and Aib9 torsion angle distribution datasets.
 
+Work published in the [Journal of Chemical Physics](https://pubs.aip.org/aip/jcp/article/162/11/114121/3340279).
+
 ![image](utils/panelaib9.png)
+
+*Figure 5 in JCP paper: Model accuracy results and generated data for the Aib9 peptide. (a) KLD performance comparison as a function of the residue index for the complete Aib9 torsion angle dataset. (b) KLD performance comparison for the three models and Gaussian baseline fit as a function of training dataset size for the Aib9 torsion angle data distribution at residue 5. (c)–(f) {Φ, Ψ} show free energy contour plots for torsion angle distributions at residue 1 for training data and generated data for NS, CFM, and DDPM, respectively.*
 
 ## Setup
 
