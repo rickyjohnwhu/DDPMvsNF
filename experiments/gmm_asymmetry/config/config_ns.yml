@@ -1,0 +1,19 @@
+---
+config:
+  dataset_limiter: 100000
+  path_dim: 50
+  path_modes: 2
+  split: [0.8, 0.1, 0.1]
+  batch_size: 128
+  bounds: [-12, 12, -12, 12]
+  lr: 0.0005
+  layers: 24
+  blocks: 1
+  channels: 256
+  context: null
+  device: 'cuda:0'
+  epoch_max: 30
+  small_sample: 100
+  aib9_status: False
+  input: '../../datasets/dim_30_modes_4.npy'
+  seed: 43
